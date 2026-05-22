@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+
+<h1>Blog list</h1>
+
+{% if blogs %}
+  <div class="blog-grid">
+        {% for blog in blogs %}
+        <div class="card">
+                <h2><a href="{% url 'blog_details' id=blog.id %}">{{ blog.title }}</a></h2>
+                <p>{{ blogs.content|truncatewords:20}}</p>
+                <div class="card-footer">{{ blog.created_at|date:"M, d, Y" }}</div>
+        </div>
+        {% endfor %}
+    </div>
+
+{% else %}
+    <div class="alert">
+        <button type = "submit"><p>No posts yet <a href="{% url 'blog_create' %}">Create!</a></p></button>
+    </div>
+    {% endif %}
+
+{% endblock %}

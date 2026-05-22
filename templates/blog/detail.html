@@ -1,0 +1,18 @@
+{% extends 'blog/base.html'%}
+{% block content %}
+<div class="blog-detail">
+<h1>{{ blogs.title }}</h1>
+<div class="content">{{ blogs.content }}</div>
+<div class="meta">Posted on: {{blogs.created_at|date:"M, D, Y"}}</div>
+<br><br>
+{% if user.is_authenticated%}
+<div>
+<button type="submit"><a href="{% url 'blog_update' id=blogs.id %}">✏️Edit</a></button>
+<button type="submit"><a href="{% url 'blog_delete' id=blogs.id %}">🗑️Delete</a></button>
+</div>
+{% endif %}
+</div>
+<div style="margin-top:20px">
+  <a href="{% url 'blog_list' %}">Back to list</a>
+</div>
+{% endblock %}

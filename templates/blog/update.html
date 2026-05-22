@@ -1,0 +1,20 @@
+{% extends 'blog/base.html'%}
+{% block content %}
+<h2>Edit</h2>
+<form method = "POST">
+    {% csrf_token %}
+    <p>
+    <label>Title:</label><br>
+    <input type="text" name="title" value="{{ blogs.title }}" required style ="width:300px;">
+    </p>
+
+    <p>
+    <label>Content:</label><br>
+    <textarea name="content" rows="6" style="width:300px;" required>{{ blogs.content }}</textarea>
+    </p>
+
+    <button type="submit">Update</submit> | 
+    <a href="{% url 'blog_details' id=blogs.id %}">cancel</a>
+
+</form>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<div class="delete-card">
+    <h2> Delete"{{blogs.title}}" ?</h2>
+    <p>Are you sure ?</p>
+    <form method = "POST">
+        {% csrf_token %}
+        <div style="display:flex; gap:10px; justify-content:center;">
+        <button type = "submit" class="btn btn-danger">Yes</button>
+        <a href = "{% url 'blog_details' id=blogs.id %}">cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
